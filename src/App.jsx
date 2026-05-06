@@ -103,13 +103,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName={PLAYERS.X}
+            initialName={players.X}
             symbol="X"
             isActive={activePlayer === 'X'}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initialName={PLAYERS.O}
+            initialName={players.O}
             symbol="O"
             isActive={activePlayer === 'O'}
             onChangeName={handlePlayerNameChange}

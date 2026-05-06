@@ -17,7 +17,7 @@ export default function Player({
     setIsEditing((editing) => !editing);
 
     if (isEditing) {
-      onChangeName(symbol, playerName);
+      onChangeName(symbol, playerName.toUpperCase());
     }
   }
 
@@ -25,12 +25,25 @@ export default function Player({
     setPlayerName(event.target.value);
   }
 
+  function handleBlur() {
+    if (isEditing && playerName.trim() !== '') {
+      setIsEditing(false);
+      onChangeName(symbol, playerName.toUpperCase());
+    }
+  }
+
   let editablePlayerName = <span className="player-name">{playerName}</span>;
   // let btnCaption = 'Edit';
 
   if (isEditing) {
     editablePlayerName = (
-      <input type="text" required value={playerName} onChange={handleChange} />
+      <input 
+        type="text" 
+        required 
+        value={playerName} 
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
     );
     // btnCaption = 'Save';
   }
